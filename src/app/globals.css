@@ -4,12 +4,45 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background: #EDF0DA;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@font-face {
+  font-family: 'BlauerNue-Regular';
+  src: url('/font/BlauerNue-Regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BlauerNue-Light';
+  src: url('/font/BlauerNue-Light.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BlauerNue-Semibold';
+  src: url('/font/BlauerNue-Semibold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+
+.BlauerNue-Regular {
+  font-family: BlauerNue-Regular;
+}
+.BlauerNue-Light {
+  font-family: BlauerNue-Light;
+}
+.BlauerNue-Semibold {
+  font-family: BlauerNue-Semibold;
 }
 
 @layer base {
