@@ -2,10 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #EDF0DA;
 }
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+
+
 
 @layer utilities {
   .text-balance {
@@ -27,13 +45,24 @@ body {
   font-style: italic;
 }
 
+
 @font-face {
-  font-family: 'BlauerNue-Semibold';
-  src: url('/font/BlauerNue-Semibold.ttf') format('truetype');
+  font-family: 'BlauerNue-Italic';
+  src: url('/font/BlauerNue-Semibold_Italic.ttf') format('truetype');
   font-weight: bold;
   font-style: italic;
 }
 
+@font-face {
+  font-family: 'BlauerNue-Extra';
+  src: url('/font/BlauerNue-ExtraBold_Italic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+.BlauerNue-Italic {
+  font-family: BlauerNue-Italic;
+}
 
 .BlauerNue-Regular {
   font-family: BlauerNue-Regular;
@@ -41,8 +70,8 @@ body {
 .BlauerNue-Light {
   font-family: BlauerNue-Light;
 }
-.BlauerNue-Semibold {
-  font-family: BlauerNue-Semibold;
+.BlauerNue-Extra {
+  font-family: BlauerNue-Extra;
 }
 
 @layer base {

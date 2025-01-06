@@ -1,10 +1,18 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/../public/logo.svg";
-import { Menu, X, ArrowRight, Home, Info, Briefcase, HelpCircle } from 'lucide-react';
+import {
+  Menu,
+  X,
+  ArrowRight,
+  Home,
+  Info,
+  Briefcase,
+  HelpCircle
+} from "lucide-react";
 
 interface NavLink {
   href: string;
@@ -20,7 +28,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        sidebarRef.current && 
+        sidebarRef.current &&
         !sidebarRef.current.contains(event.target as Node) &&
         !toggleRef.current?.contains(event.target as Node)
       ) {
@@ -28,8 +36,8 @@ const Header: React.FC = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const closeSidebar = (): void => setIsOpen(false);
@@ -38,21 +46,21 @@ const Header: React.FC = () => {
     { href: "#", text: "About Us", icon: <Info className="w-5 h-5" /> },
     { href: "#", text: "Services", icon: <Briefcase className="w-5 h-5" /> },
     { href: "#", text: "Our Work", icon: <Home className="w-5 h-5" /> },
-    { href: "#", text: "FAQ", icon: <HelpCircle className="w-5 h-5" /> },
+    { href: "#", text: "FAQ", icon: <HelpCircle className="w-5 h-5" /> }
   ];
 
   return (
-    <header className="relative">
+    <header className="fixed w-full z-[10]">
       {/* Overlay */}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-50 transition-opacity z-30"
           onClick={closeSidebar}
         />
       )}
 
       {/* Main Header */}
-      <div className="p-4 md:p-8 bg-white border-b-[1px]">
+      <div className="p-4 md:p-8 bg-[#EDF0DA] bg-opacity-20 border-b-[1px]">
         <div className="max-w-[1200px] mx-auto">
           <div className="flex items-center justify-between">
             {/* Mobile Menu Button */}
@@ -83,21 +91,18 @@ const Header: React.FC = () => {
 
             {/* Logo */}
             <div className="flex-1 flex justify-center">
-              <Image 
-                src={Logo} 
-                alt="Brand" 
-                width={80} 
+              <Image
+                src={Logo}
+                alt="Brand"
+                width={80}
                 height={80}
-                className="transform hover:scale-105 transition-transform duration-300" 
+                className="transform hover:scale-105 transition-transform duration-300"
               />
             </div>
 
             {/* Desktop Right Side */}
             <div className="hidden md:flex flex-1 justify-end gap-8 items-center">
-              <Link
-                href="#"
-                className="BlauerNue-Semibold relative group"
-              >
+              <Link href="#" className="BlauerNue-Semibold relative group">
                 <span className="relative">
                   FAQ
                   <span className="absolute inset-x-0 bottom-0 h-0.5 bg-[#BE1E2D] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
@@ -118,7 +123,7 @@ const Header: React.FC = () => {
       <div
         ref={sidebarRef}
         className={`fixed top-0 left-0 h-full w-72 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-40 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+          isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="p-6">
