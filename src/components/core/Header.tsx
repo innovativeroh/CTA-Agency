@@ -110,7 +110,7 @@ const Header: React.FC = () => {
               </Link>
               <Link
                 href="#"
-                className="BlauerNue-Semibold bg-[#BE1E2D] py-2 px-4 text-[#EDF0DA] flex items-center gap-2 rounded-lg hover:bg-red-800 transform hover:-translate-y-0.5 transition-all duration-300"
+                className="BlauerNue-Semibold bg-[#BE1E2D] py-2 px-4 text-[#EDF0DA] flex items-center gap-2 rounded-lg hover:bg-[#273043] transform hover:-translate-y-0.5 transition-all duration-300"
               >
                 Contact Us <ArrowRight className="w-5 h-5" />
               </Link>
@@ -156,7 +156,7 @@ const Header: React.FC = () => {
             ))}
             <Link
               href="#"
-              className="block mt-6 BlauerNue-Semibold bg-[#BE1E2D] py-3 px-4 text-[#EDF0DA] rounded-lg hover:bg-red-800 transition-colors text-center"
+              className="block mt-6 BlauerNue-Semibold bg-[#BE1E2D] py-3 px-4 text-[#EDF0DA] rounded-lg hover:bg-[#273043] transition-colors text-center"
               onClick={closeSidebar}
             >
               Contact Us
