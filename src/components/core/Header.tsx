@@ -60,7 +60,7 @@ const Header: React.FC = () => {
       )}
 
       {/* Main Header */}
-      <div className="p-4 md:p-8 bg-[#EDF0DA] bg-opacity-20 border-b-[1px]">
+      <div className="p-4 md:p-8 bg-white border-b-[1px]">
         <div className="max-w-[1200px] mx-auto">
           <div className="flex items-center justify-between">
             {/* Mobile Menu Button */}

@@ -130,6 +130,27 @@ body {
   }
 }
 
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-start {
+    @apply flex justify-start items-center;
+  }
+
+  .flex-end {
+    @apply flex justify-end items-center;
+  }
+  .blog-arrow path {
+    fill: #888888;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
