@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface ServiceItem {
   id: string;
@@ -72,10 +73,12 @@ const OurServicesSection = () => {
                 </p>
                 {service.image && (
                   <div className="rounded-xl overflow-hidden">
-                    <img 
+                    <Image
                       src={service.image} 
                       alt={service.title}
                       className="w-full h-64 object-cover"
+                      width={640}
+                      height={256}
                     />
                   </div>
                 )}

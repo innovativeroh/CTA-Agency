@@ -81,7 +81,7 @@ const ReviewCard = ({
       <div className="flex flex-col gap-6">
         <blockquote className="relative text-base leading-relaxed text-gray-700 dark:text-gray-300">
           <span className="absolute -left-2 -top-2 text-4xl text-blue-500/20">
-            "
+            &ldquo;
           </span>
           {body}
         </blockquote>
