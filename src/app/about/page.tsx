@@ -1,128 +1,126 @@
-import { ChartBarIcon, CodeBracketIcon, ShareIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import React from 'react'
+import { Phone, Mail, Globe } from 'lucide-react'
 
-export default function AboutPage() {
+const AboutPage = () => {
+  const stats = [
+    { value: '₹5Cr+', label: 'Ad Spend Managed' },
+    { value: '14x', label: 'Max ROAS Achieved' },
+    { value: '100+', label: 'Happy Clients' },
+  ]
+
+  const expertise = [
+    {
+      title: "Performance Marketing",
+      description: "We excel in crafting targeted campaigns that enhance your brand's visibility and drive measurable results."
+    },
+    {
+      title: 'Web Design & Development',
+      description: "From concept to creation, our team builds and optimizes websites that exceed expectations and deliver seamless user experiences."
+    },
+    {
+      title: 'Social Media Marketing',
+      description: "Amplify your brand's reach with engaging content and impactful campaigns designed to resonate with your audience."
+    },
+    {
+      title: 'Influencer Marketing',
+      description: "Connect with the right influencers to tell your brand's story authentically and build lasting connections with your audience."
+    }
+  ]
+
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="max-w-7xl mx-auto px-4 py-28 sm:px-6 lg:px-8">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-6">
-              Designing Digital Strategies That Deliver
-            </h1>
-            <p className="text-gray-700 text-lg leading-relaxed">
-              Unifying the complexities of media, data, audience insights, and analytics, 
-              we empower your brand's potential. At CTA, we blend creativity and performance 
-              to craft strategies that transform your business into a growth powerhouse.
-            </p>
-          </div>
-          <div className="relative">
-            <div className="absolute -z-10 top-0 right-0 w-72 h-72 bg-purple-200 rounded-full filter blur-3xl opacity-30"></div>
-            <img 
-              src="/team-collaboration.jpg" 
-              alt="Team Collaboration" 
-              className="rounded-lg shadow-2xl"
-            />
-          </div>
-        </div>
-      </section>
+      <div className="text-center mb-16">
+        <h2 className="text-sm uppercase tracking-wide text-gray-500 mb-2">About Us</h2>
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          Unlocking Potential with<br />Digital Precision
+        </h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          At CTA Agency, we specialize in transforming your brand's digital presence into a powerhouse 
+          of growth and innovation. Our goal is simple: Your goals, our expertise.
+        </p>
+      </div>
 
-      {/* Vision Section */}
-      <section className="bg-gray-50 py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-16">Our Vision</h2>
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-gray-700 text-lg">
-              Empower brands with cutting-edge digital strategies that lead to tangible results. 
-              We believe in the power of data-driven decisions combined with creative excellence 
-              to shape the future of businesses worldwide.
-            </p>
-          </div>
+      {/* Stats Section */}
+      <div className="bg-gray-900 rounded-2xl p-8 mb-16">
+        <div className="grid grid-cols-3 gap-8">
+          {stats.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-4xl font-bold text-white mb-2">{stat.value}</div>
+              <div className="text-gray-400">{stat.label}</div>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
 
-      {/* Expertise Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-16">Our Expertise</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {expertiseItems.map((item, index) => (
-              <div key={index} className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                <item.icon className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-              </div>
-            ))}
+      {/* What Sets Us Apart */}
+      <div className="mb-16">
+        <h2 className="text-3xl font-bold mb-8">What Sets Us Apart?</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold mb-4">Proven Results</h3>
+            <p className="text-gray-600">With over ₹5 crore in ad spends and an impressive ROAS of up to 14x, we deliver tangible outcomes that drive your business forward.</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold mb-4">Comprehensive Solutions</h3>
+            <p className="text-gray-600">From Shopify-powered e-commerce stores to bespoke web development, we cover all facets of digital strategy.</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold mb-4">Tailored Strategies</h3>
+            <p className="text-gray-600">Every business is unique. That's why we design customized solutions that align with your specific objectives.</p>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Impact Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-16">Our Impact</h2>
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            {impactStats.map((stat, index) => (
-              <div key={index} className="p-6">
-                <div className="text-4xl font-bold mb-2">{stat.value}</div>
-                <div className="text-lg opacity-90">{stat.label}</div>
-              </div>
-            ))}
+      {/* Our Expertise */}
+      <div className="mb-16">
+        <h2 className="text-3xl font-bold mb-8">Our Expertise</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {expertise.map((item) => (
+            <div key={item.title} className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
+              <p className="text-gray-600">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Success Stories */}
+      <div className="mb-16">
+        <h2 className="text-3xl font-bold mb-8">Our Success Stories</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold mb-4">Black Friday Brilliance</h3>
+            <p className="text-gray-600">Achieved an impressive 14x ROAS during a Black Friday Sale.</p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold mb-4">Collection Launch Triumph</h3>
+            <p className="text-gray-600">Delivered an extraordinary 18x ROAS for a client's product launch.</p>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Contact Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
-          <p className="text-gray-700 mb-8 max-w-2xl mx-auto">
-            Ready to redefine your brand's potential? Let's connect and start your 
-            digital transformation journey.
-          </p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition-colors">
-            Contact Us
-          </button>
+      <div className="bg-gray-50 rounded-2xl p-8">
+        <h2 className="text-3xl font-bold mb-4">Connect with Us</h2>
+        <p className="mb-6 text-gray-600">Your success is just a conversation away. Reach out to us and let's discuss your digital goals.</p>
+        <div className="space-y-4">
+          <div className="flex items-center">
+            <Phone className="w-6 h-6 mr-3 text-gray-600" />
+            <span>+91 7792092027</span>
+          </div>
+          <div className="flex items-center">
+            <Mail className="w-6 h-6 mr-3 text-gray-600" />
+            <span>howdy.cta@gmail.com</span>
+          </div>
+          <div className="flex items-center">
+            <Globe className="w-6 h-6 mr-3 text-gray-600" />
+            <span>www.howdycta.com</span>
+          </div>
         </div>
-      </section>
-    </main>
-  );
+      </div>
+    </div>
+  )
 }
 
-const expertiseItems = [
-  {
-    icon: ChartBarIcon,
-    title: "Performance Marketing",
-    description: "Strategies designed to maximize your Return on Ad Spend (ROAS)."
-  },
-  {
-    icon: CodeBracketIcon,
-    title: "Web Development & Design",
-    description: "Building, optimizing, and innovating your online presence."
-  },
-  {
-    icon: ShareIcon,
-    title: "Social Media Marketing",
-    description: "Crafting engaging campaigns to amplify your reach."
-  },
-  {
-    icon: UserGroupIcon,
-    title: "Influencer Marketing",
-    description: "Transforming narratives to create meaningful brand connections."
-  }
-];
-
-const impactStats = [
-  {
-    value: "5 Cr+",
-    label: "Ad Spend Managed"
-  },
-  {
-    value: "15+",
-    label: "Core Services"
-  },
-  {
-    value: "14X",
-    label: "ROAS on Successful Campaigns"
-  }
-];
+export default AboutPage
