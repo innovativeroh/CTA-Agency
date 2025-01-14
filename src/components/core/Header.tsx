@@ -13,6 +13,7 @@ import {
   Briefcase,
   HelpCircle
 } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 interface NavLink {
   href: string;
@@ -21,6 +22,7 @@ interface NavLink {
 }
 
 const Header: React.FC = () => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const sidebarRef = useRef<HTMLDivElement | null>(null);
   const toggleRef = useRef<HTMLButtonElement | null>(null);
@@ -39,6 +41,22 @@ const Header: React.FC = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const hiddenPaths = [
+    /^\/studio$/,              
+    /^\/studio\/login$/,       
+    /^\/studio\/structure$/,       
+    /^\/studio\/logout$/,      
+    /^\/studio\/desk$/,        
+    /^\/studio\/projects$/,    
+    /^\/studio\/settings$/,    
+    /^\/studio\/documents$/,   
+  ] as RegExp[];
+  const isHiddenPath = hiddenPaths.some((pattern) => pattern.test(pathname));
+
+  if (isHiddenPath) {
+    return null;
+  }
 
   const closeSidebar = (): void => setIsOpen(false);
 

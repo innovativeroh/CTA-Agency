@@ -4,17 +4,6 @@ import "./globals.css";
 import Header from "@/components/core/Header";
 import FooterSection from "@/components/core/FooterSection";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 export const metadata: Metadata = {
   title: "CTA Agency | Designing Digital Strategies",
   description: "CTA Agency | Designing Digital Strategies",
@@ -31,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`antialiased`}
       >
         <Header />
         {children}

@@ -1,9 +1,30 @@
+"use client"
 import { Facebook, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const FooterSection = () => {
+  const pathname = usePathname();
+
+  const hiddenPaths = [
+    /^\/studio$/,              
+    /^\/studio\/login$/,       
+    /^\/studio\/structure$/,       
+    /^\/studio\/logout$/,      
+    /^\/studio\/desk$/,        
+    /^\/studio\/projects$/,    
+    /^\/studio\/settings$/,    
+    /^\/studio\/documents$/,   
+  ] as RegExp[];
+
+  const isHiddenPath = hiddenPaths.some((pattern) => pattern.test(pathname));
+
+  if (isHiddenPath) {
+    return null;
+  }
+
   return (
     <section className="border-t-[1px] w-full border-neutral-300">
       <main className="max-w-[1440px] m-auto mt-5">
