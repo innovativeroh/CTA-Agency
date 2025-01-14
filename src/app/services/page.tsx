@@ -7,17 +7,17 @@ const ServiceCard = ({ icon: Icon, title, description, features }: {
   description: string,
   features: string[]
 }) => (
-  <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 m">
+  <div className="backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-[#273043]/10 m">
     <div className="flex items-center gap-4 mb-6">
       <div className="p-3 bg-primary/10 rounded-xl">
-        <Icon className="text-primary text-2xl" />
+        <Icon className="text-[#BE1E2D] text-2xl" />
       </div>
       <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">{title}</h3>
     </div>
-    <p className="text-gray-600 mb-6 leading-relaxed">{description}</p>
+    <p className="text-[#273043] mb-6 leading-relaxed">{description}</p>
     <ul className="space-y-3">
       {features.map((feature, index) => (
-        <li key={index} className="flex items-center gap-3 text-gray-700">
+        <li key={index} className="flex items-center gap-3 text-[#273043]">
           <span className="w-2 h-2 bg-primary/60 rounded-full" />
           {feature}
         </li>
@@ -91,10 +91,10 @@ const ServicesPage = () => {
         <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
           Our Services
         </h1>
-        <p className="text-2xl text-gray-600 max-w-3xl mx-auto font-medium">
+        <p className="text-2xl text-[#273043] max-w-3xl mx-auto font-medium">
           Driving Growth Through Excellence
         </p>
-        <p className="mt-6 text-gray-600 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-6 text-[#273043] max-w-2xl mx-auto leading-relaxed">
           At CTA, we specialize in crafting tailored strategies to accelerate your brand's success. 
           From building dynamic online experiences to delivering high-impact marketing campaigns, 
           we offer a comprehensive suite of services designed to transform your vision into reality.
@@ -119,9 +119,9 @@ const ServicesPage = () => {
             { title: "Comprehensive Services", desc: "From strategy to execution, we've got you covered" },
             { title: "Tailored Solutions", desc: "Custom strategies designed for your business needs" }
           ].map((item, index) => (
-            <div key={index} className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300">
-              <h3 className="text-xl font-bold mb-4 text-primary">{item.title}</h3>
-              <p className="text-gray-600">{item.desc}</p>
+            <div key={index} className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-[#273043]/10 hover:shadow-lg transition-all duration-300">
+              <h3 className="text-xl font-bold mb-4 text-[#BE1E2D]">{item.title}</h3>
+              <p className="text-[#273043]">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -130,8 +130,8 @@ const ServicesPage = () => {
       {/* CTA Section */}
       <div className="mt-32 text-center bg-gradient-to-r from-primary to-primary/90 text-white py-20 rounded-2xl shadow-xl">
         <h2 className="text-4xl font-bold mb-6">Ready to Take Your Brand to the Next Level?</h2>
-        <p className="mb-10 text-lg text-white/90">Let's work together to unlock your brand's potential.</p>
-        <button className="bg-white text-primary px-10 py-4 rounded-full font-bold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl">
+        <p className="mb-10 text-lg text-[#EDF0DA]/90">Let's work together to unlock your brand's potential.</p>
+        <button className="bg-white text-[#BE1E2D] px-10 py-4 rounded-full font-bold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl">
           Contact Us
         </button>
       </div>
