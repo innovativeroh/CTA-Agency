@@ -11,9 +11,11 @@ import {
   Home,
   Info,
   Briefcase,
-  HelpCircle
+  HelpCircle,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
 
 interface NavLink {
   href: string;
@@ -43,14 +45,14 @@ const Header: React.FC = () => {
   }, []);
 
   const hiddenPaths = [
-    /^\/studio$/,              
-    /^\/studio\/login$/,       
-    /^\/studio\/structure$/,       
-    /^\/studio\/logout$/,      
-    /^\/studio\/desk$/,        
-    /^\/studio\/projects$/,    
-    /^\/studio\/settings$/,    
-    /^\/studio\/documents$/,   
+    /^\/studio$/,
+    /^\/studio\/login$/,
+    /^\/studio\/structure$/,
+    /^\/studio\/logout$/,
+    /^\/studio\/desk$/,
+    /^\/studio\/projects$/,
+    /^\/studio\/settings$/,
+    /^\/studio\/documents$/,
   ] as RegExp[];
   const isHiddenPath = hiddenPaths.some((pattern) => pattern.test(pathname));
 
@@ -62,10 +64,15 @@ const Header: React.FC = () => {
 
   const navLinks: NavLink[] = [
     { href: "/about", text: "About Us", icon: <Info className="w-5 h-5" /> },
-    { href: "/services", text: "Services", icon: <Briefcase className="w-5 h-5" /> },
+    {
+      href: "/services",
+      text: "Services",
+      icon: <Briefcase className="w-5 h-5" />,
+    },
     { href: "/works", text: "Our Work", icon: <Home className="w-5 h-5" /> },
-    { href: "#", text: "FAQ", icon: <HelpCircle className="w-5 h-5" /> }
   ];
+
+  const router = useRouter()
 
   return (
     <header className="fixed w-full z-[10]">
@@ -109,27 +116,27 @@ const Header: React.FC = () => {
 
             {/* Logo */}
             <div className="flex-1 flex justify-center">
-              <Link href={'/'}>
-              <Image
-                src={Logo}
-                alt="Brand"
-                width={80}
-                height={80}
-                className="transform hover:scale-105 transition-transform duration-300"
-              />
+              <Link href={"/"}>
+                <Image
+                  src={Logo}
+                  alt="Brand"
+                  width={80}
+                  height={80}
+                  className="transform hover:scale-105 transition-transform duration-300"
+                />
               </Link>
             </div>
 
             {/* Desktop Right Side */}
             <div className="hidden md:flex flex-1 justify-end gap-8 items-center">
-              <Link href="#" className="BlauerNue-Semibold relative group">
+              <Link href="#faq" className="BlauerNue-Semibold relative group">
                 <span className="relative">
                   FAQ
                   <span className="absolute inset-x-0 bottom-0 h-0.5 bg-[#BE1E2D] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
                 </span>
               </Link>
               <Link
-                href="#"
+                href="/#faq"
                 className="BlauerNue-Semibold bg-[#BE1E2D] py-2 px-4 text-[#EDF0DA] flex items-center gap-2 rounded-lg hover:bg-[#273043] transform hover:-translate-y-0.5 transition-all duration-300"
               >
                 Contact Us <ArrowRight className="w-5 h-5" />
@@ -174,13 +181,12 @@ const Header: React.FC = () => {
                 </span>
               </Link>
             ))}
-            <Link
-              href="#"
+            <Button
+              onClick={() => {router.push('/contact')}}
               className="block mt-6 BlauerNue-Semibold bg-[#BE1E2D] py-3 px-4 text-[#EDF0DA] rounded-lg hover:bg-[#273043] transition-colors text-center"
-              onClick={closeSidebar}
             >
               Contact Us
-            </Link>
+            </Button>
           </nav>
         </div>
       </div>

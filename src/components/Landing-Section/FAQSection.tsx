@@ -47,7 +47,7 @@ const FAQAccordion = ({ question, answer, icon }: FAQItem) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-200 last:border-b-0 px-5">
+    <div className="border-b border-gray-200 last:border-b-0 px-5" id='faq'>
       <button
         className="w-full flex justify-between items-center text-left py-6 hover:bg-gray-50 transition-colors duration-200"
         onClick={() => setIsOpen(!isOpen)}
