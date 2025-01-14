@@ -43,8 +43,8 @@ const Header: React.FC = () => {
   const closeSidebar = (): void => setIsOpen(false);
 
   const navLinks: NavLink[] = [
-    { href: "#", text: "About Us", icon: <Info className="w-5 h-5" /> },
-    { href: "#", text: "Services", icon: <Briefcase className="w-5 h-5" /> },
+    { href: "/about", text: "About Us", icon: <Info className="w-5 h-5" /> },
+    { href: "/services", text: "Services", icon: <Briefcase className="w-5 h-5" /> },
     { href: "#", text: "Our Work", icon: <Home className="w-5 h-5" /> },
     { href: "#", text: "FAQ", icon: <HelpCircle className="w-5 h-5" /> }
   ];
@@ -91,6 +91,7 @@ const Header: React.FC = () => {
 
             {/* Logo */}
             <div className="flex-1 flex justify-center">
+              <Link href={'/'}>
               <Image
                 src={Logo}
                 alt="Brand"
@@ -98,6 +99,7 @@ const Header: React.FC = () => {
                 height={80}
                 className="transform hover:scale-105 transition-transform duration-300"
               />
+              </Link>
             </div>
 
             {/* Desktop Right Side */}
