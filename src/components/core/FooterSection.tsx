@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import FooterLogo from "@/../logo_1.svg";
 
 const FooterSection = () => {
   const pathname = usePathname();
@@ -21,9 +22,9 @@ const FooterSection = () => {
       <main className="max-w-[1440px] m-auto mt-5">
         <div className="px-5 py-10 w-full flex-between gap-5">
           <div className="flex-[1] w-full flex flex-col gap-7 items-start justify-start">
-            <Image src={"/logo_1.svg"} alt="" width={100} height={190} />
+            <Image src={FooterLogo} alt="" width={100} height={190} />
             <div className="flex flex-col gap-3">
-              <h1 className="text-white text-2xl font-medium">CTA Agency</h1>
+              <h1 className="text-white text-2xl font-medium">Marketing Agency</h1>
               <p className="text-gray-200 text-3xl lg:text-4xl font-medium max-w-[500px]">
                 DESIGNING DIGITAL STRATEGIES.
               </p>
