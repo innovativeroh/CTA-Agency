@@ -61,7 +61,7 @@ const FAQAccordion = ({ question, answer, icon }: FAQItem) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="last:border-b-0 px-5" id="faq">
+    <div className="last:border-b-0 px-5 border-black" id="faq">
       <button
         className="w-full flex justify-between items-center text-left py-6 transition-colors duration-200"
         onClick={() => setIsOpen(!isOpen)}
@@ -104,8 +104,8 @@ const FAQSection = () => {
             Frequently Asked Questions
           </h2>
         </div>
-        <div className="rounded-2xl shadow-lg border border-gray-800">
-          <div className="divide-y divide-gray-800">
+        <div className="rounded-2xl shadow-lg border border-black">
+          <div className="divide-y divide-black">
             {faqs.map((faq, index) => (
               <FAQAccordion key={index} {...faq} />
             ))}

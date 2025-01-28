@@ -173,35 +173,6 @@ export default function Hero() {
         variants={itemVariants}
         className="absolute bottom-8 left-0 right-0 mx-auto w-fit flex flex-col items-center"
       >
-        <motion.span
-          variants={itemVariants}
-          className="text-zinc-600 text-base md:text-lg font-semibold mb-2"
-        >
-          Scroll Down
-        </motion.span>
-        <motion.button
-          whileHover={{
-            scale: 1.1,
-            transition: { type: "spring", stiffness: 400 },
-          }}
-          whileTap={{ scale: 0.95 }}
-          onClick={scrollToNextSection}
-          className="bg-zinc-200 hover:bg-zinc-300 transition-all duration-300 rounded-full p-2"
-          aria-label="Scroll to next section"
-        >
-          <motion.div
-            animate={{
-              y: [0, 5, 0],
-              transition: {
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              },
-            }}
-          >
-            <ChevronDown size={24} className="text-zinc-600" />
-          </motion.div>
-        </motion.button>
       </motion.div>
       <GridPattern
         width={30}

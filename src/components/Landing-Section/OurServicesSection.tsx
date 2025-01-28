@@ -80,7 +80,7 @@ const OurServicesSection = () => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="max-w-[1440px] m-auto bg-zinc-900/90 rounded-2xl md:p-5"
+        className="max-w-[1440px] m-auto p-10 bg-zinc-900/90 rounded-2xl"
       >
         <h2 className="text-5xl font-bold mb-6 text-white max-w-[600px]">
           Services That Add Significant Business Value
@@ -92,7 +92,7 @@ const OurServicesSection = () => {
         </p>
       </motion.div>
 
-      <div className="space-y-6 max-w-[1440px] m-auto bg-zinc-900/90 rounded-2xl md:p-5">
+      <div className="space-y-6 mt-10 max-w-[1440px] m-auto bg-zinc-900/90 rounded-2xl md:p-5">
         {services.map((service) => (
           <motion.div
             key={service.id}
@@ -123,8 +123,8 @@ const OurServicesSection = () => {
                 className={`w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-xl transition-all duration-200
                   ${
                     expandedId === service.id
-                      ? "bg-red-600 text-white border-red-600"
-                      : "hover:border-gray-400"
+                      ? "bg-red-600 text-white border-[#BE1E2D]"
+                      : "hover:border-gray-400 border-[#BE1E2D] text-[#BE1E2D]"
                   }`}
               >
                 {expandedId === service.id ? "−" : "+"}

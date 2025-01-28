@@ -74,7 +74,7 @@ const ReviewCard = ({
       className={cn(
         "relative w-80 transform cursor-pointer overflow-hidden rounded-2xl p-8",
         // light styles
-        "bg-zinc-900/90 shadow-lg hover:shadow-2xl border-l-4 border-l-red-500"
+        "bg-zinc-900/90 shadow-lg hover:shadow-2xl border-l-4 border-l-[#BE1E2D]"
       )}
     >
       <div className="flex flex-col gap-6">
@@ -96,8 +96,8 @@ const ReviewCard = ({
             <figcaption className="text-lg font-semibold text-gray-300 dark:text-white">
               {name}
             </figcaption>
-            <p className="text-sm font-medium text-gray-5 00">{role}</p>
-            <p className="text-xs font-semibold text-red-500 dark:text-blue-400">
+            <p className="text-sm font-medium text-gray-5 text-white">{role}</p>
+            <p className="text-xs font-semibold text-[#BE1E2D] dark:text-blue-400">
               {condition}
             </p>
           </div>
