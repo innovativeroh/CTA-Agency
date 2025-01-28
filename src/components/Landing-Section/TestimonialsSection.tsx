@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { GridPattern } from "../ui/grid-pattern";
-
+import { BorderBeam } from '@/components/ui/border-beam';
 const reviews = [
   {
     name: "Alice Johnson",
@@ -74,7 +74,7 @@ const ReviewCard = ({
       className={cn(
         "relative w-80 transform cursor-pointer overflow-hidden rounded-2xl p-8",
         // light styles
-        "bg-zinc-900/90 shadow-lg hover:shadow-2xl border-l-4 border-l-[#BE1E2D]"
+        "bg-zinc-900/90 shadow-lg hover:shadow-2xl"
       )}
     >
       <div className="flex flex-col gap-6">
@@ -103,6 +103,7 @@ const ReviewCard = ({
           </div>
         </div>
       </div>
+      <BorderBeam />
     </motion.figure>
   );
 };
@@ -182,8 +183,9 @@ export function TestimonialsSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 1, delay: index * 0.1 }}
-            >
+              >
               <ReviewCard {...review} />
+
             </motion.div>
           ))}
         </Marquee>
