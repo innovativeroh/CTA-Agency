@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/../public/logo.svg";
+import Logo from "@/../public/Logo_1.svg";
 import {
   Menu,
   X,
@@ -25,6 +25,7 @@ interface NavLink {
 
 const Header: React.FC = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const sidebarRef = useRef<HTMLDivElement | null>(null);
   const toggleRef = useRef<HTMLButtonElement | null>(null);
@@ -44,16 +45,7 @@ const Header: React.FC = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const hiddenPaths = [
-    /^\/studio$/,
-    /^\/studio\/login$/,
-    /^\/studio\/structure$/,
-    /^\/studio\/logout$/,
-    /^\/studio\/desk$/,
-    /^\/studio\/projects$/,
-    /^\/studio\/settings$/,
-    /^\/studio\/documents$/,
-  ] as RegExp[];
+  const hiddenPaths = [/^\/studio(\/.*)?$/] as RegExp[];
   const isHiddenPath = hiddenPaths.some((pattern) => pattern.test(pathname));
 
   if (isHiddenPath) {
@@ -65,14 +57,10 @@ const Header: React.FC = () => {
   const navLinks: NavLink[] = [
     { href: "/about", text: "About Us", icon: <Info className="w-5 h-5" /> },
     {
-      href: "/services",
-      text: "Services",
-      icon: <Briefcase className="w-5 h-5" />,
+      href: "/services", text: "Services", icon: <Briefcase className="w-5 h-5" />,
     },
     { href: "/works", text: "Our Work", icon: <Home className="w-5 h-5" /> },
   ];
-
-  const router = useRouter()
 
   return (
     <header className="fixed w-full z-[10]">
@@ -85,26 +73,26 @@ const Header: React.FC = () => {
       )}
 
       {/* Main Header */}
-      <div className="p-4 md:p-8 bg-white border-b-[1px]">
+      <div className="p-4 md:p-8 bg-black border-b-[1px] border-gray-800">
         <div className="max-w-[1200px] mx-auto">
           <div className="flex items-center justify-between">
             {/* Mobile Menu Button */}
             <button
               ref={toggleRef}
-              className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              className="md:hidden p-2 hover:bg-white/20 rounded-lg transition-colors"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6 text-white" />
             </button>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex flex-1 gap-8">
-              {navLinks.slice(0, 3).map((link) => (
+              {navLinks.slice(1, 3).map((link) => (
                 <Link
                   key={link.text}
                   href={link.href}
-                  className="BlauerNue-Semibold relative group"
+                  className="BlauerNue-Semibold relative group text-white hover:text-white/75"
                 >
                   <span className="relative">
                     {link.text}
@@ -129,14 +117,17 @@ const Header: React.FC = () => {
 
             {/* Desktop Right Side */}
             <div className="hidden md:flex flex-1 justify-end gap-8 items-center">
-              <Link href="#faq" className="BlauerNue-Semibold relative group">
+              <Link
+                href={"/about"}
+                className="BlauerNue-Semibold relative group text-white hover:text-white/75"
+              >
                 <span className="relative">
-                  FAQ
+                  About Us
                   <span className="absolute inset-x-0 bottom-0 h-0.5 bg-[#BE1E2D] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
                 </span>
               </Link>
               <Link
-                href="/#faq"
+                href="/contact"
                 className="BlauerNue-Semibold bg-[#BE1E2D] py-2 px-4 text-[#EDF0DA] flex items-center gap-2 rounded-lg hover:bg-[#273043] transform hover:-translate-y-0.5 transition-all duration-300"
               >
                 Contact Us <ArrowRight className="w-5 h-5" />
@@ -149,7 +140,7 @@ const Header: React.FC = () => {
       {/* Mobile Sidebar */}
       <div
         ref={sidebarRef}
-        className={`fixed top-0 left-0 h-full w-72 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-40 ${
+        className={`fixed top-0 left-0 h-full w-72 bg-[#273043] shadow-2xl transform transition-transform duration-300 ease-in-out z-40 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -158,10 +149,10 @@ const Header: React.FC = () => {
             <Image src={Logo} alt="Brand" width={60} height={60} />
             <button
               onClick={closeSidebar}
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-2 hover:bg-gray-500 rounded-full transition-colors"
               aria-label="Close menu"
             >
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 text-white" />
             </button>
           </div>
 
@@ -170,19 +161,21 @@ const Header: React.FC = () => {
               <Link
                 key={link.text}
                 href={link.href}
-                className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg transition-colors group"
+                className="flex items-center gap-3 p-3 hover:bg-gray-500 rounded-lg transition-colors group"
                 onClick={closeSidebar}
               >
-                <span className="text-gray-600 group-hover:text-[#BE1E2D] transition-colors">
+                <span className="text-white group-hover:text-white/75 transition-colors">
                   {link.icon}
                 </span>
-                <span className="BlauerNue-Semibold group-hover:text-[#BE1E2D] transition-colors">
+                <span className="text-white group-hover:text-white/75 transition-colors">
                   {link.text}
                 </span>
               </Link>
             ))}
             <Button
-              onClick={() => {router.push('/contact')}}
+              onClick={() => {
+                router.push("/contact");
+              }}
               className="block mt-6 BlauerNue-Semibold bg-[#BE1E2D] py-3 px-4 text-[#EDF0DA] rounded-lg hover:bg-[#273043] transition-colors text-center"
             >
               Contact Us

@@ -1,9 +1,10 @@
 "use client";
 import { cn } from "@/lib/utils";
-import Marquee from "@/components/ui/marquee";
+import { Marquee } from "@/components/ui/marquee";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { GridPattern } from "../ui/grid-pattern";
 
 const reviews = [
   {
@@ -73,14 +74,12 @@ const ReviewCard = ({
       className={cn(
         "relative w-80 transform cursor-pointer overflow-hidden rounded-2xl p-8",
         // light styles
-        "bg-white shadow-lg hover:shadow-2xl border-l-4 border-l-red-500",
-        // dark styles
-        "dark:bg-gray-800/90 dark:border-l-red -400 dark:backdrop-blur-sm"
+        "bg-zinc-900/90 shadow-lg hover:shadow-2xl border-l-4 border-l-red-500"
       )}
     >
       <div className="flex flex-col gap-6">
-        <blockquote className="relative text-base leading-relaxed text-gray-700 dark:text-gray-300">
-          <span className="absolute -left-2 -top-2 text-4xl text-blue-500/20">
+        <blockquote className="relative text-base leading-relaxed text-gray-300">
+          <span className="absolute -left-2 -top-2 text-4xl text-gray-500/50">
             &ldquo;
           </span>
           {body}
@@ -94,12 +93,10 @@ const ReviewCard = ({
             src={img}
           />
           <div>
-            <figcaption className="text-lg font-semibold text-gray-900 dark:text-white">
+            <figcaption className="text-lg font-semibold text-gray-300 dark:text-white">
               {name}
             </figcaption>
-            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              {role}
-            </p>
+            <p className="text-sm font-medium text-gray-5 00">{role}</p>
             <p className="text-xs font-semibold text-red-500 dark:text-blue-400">
               {condition}
             </p>
@@ -165,7 +162,7 @@ export function TestimonialsSection() {
       >
         <motion.h1
           variants={fadeInUp}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mt-3 max-w-[900px]"
+          className="text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mt-3 max-w-[900px]"
         >
           Words of praise from others About our presence.
         </motion.h1>
@@ -206,18 +203,25 @@ export function TestimonialsSection() {
         </Marquee>
 
         <motion.div
-          className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-red-50/90 dark:from-gray-900/90"
+          className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-black/50"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1, delay: 1 }}
         />
         <motion.div
-          className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-red-50/90 dark:from-gray-900/90"
+          className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-black/50"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1, delay: 1 }}
         />
       </motion.div>
+      <GridPattern
+        width={30}
+        height={30}
+        x={-1}
+        y={-1}
+        className="z-[-1] opacity-40"
+      />
     </motion.section>
   );
 }

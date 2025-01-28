@@ -1,7 +1,8 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['avatar.vercel.sh']
+        domains: ['avatar.vercel.sh', 'cdn.sanity.io']
     }
 };
 

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { GridPattern } from "../ui/grid-pattern";
 
 interface ServiceItem {
   id: string;
@@ -60,7 +61,7 @@ const OurServicesSection = () => {
       title: "Diverse Campaign Expertise",
       description:
         "Expertise in lead generation, product promotions, and impactful strategies that matter.",
-        image: '/Diverse Campaign Expertise.jpg',
+      image: "/Diverse Campaign Expertise.jpg",
       isExpanded: false,
     },
   ];
@@ -73,46 +74,46 @@ const OurServicesSection = () => {
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="max-w-[1380px] mx-auto px-4 py-16 bg-white"
+      className="mx-auto px-4 py-16 relative"
     >
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="mb-16"
+        className="max-w-[1440px] m-auto bg-zinc-900/90 rounded-2xl md:p-5"
       >
-        <h2 className="text-5xl font-bold mb-6 text-gray-900 max-w-[600px]">
+        <h2 className="text-5xl font-bold mb-6 text-white max-w-[600px]">
           Services That Add Significant Business Value
         </h2>
-        <p className="text-gray-600 max-w-2xl">
+        <p className="text-gray-400 max-w-2xl">
           Our offerings encompass services that serve as startup mentoring or
           include consulting, contributing to the enhanced value proposition of
           your business.
         </p>
       </motion.div>
 
-      <div className="space-y-6">
+      <div className="space-y-6 max-w-[1440px] m-auto bg-zinc-900/90 rounded-2xl md:p-5">
         {services.map((service) => (
           <motion.div
             key={service.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="border-b border-gray-200 pb-6"
+            className="border-b border-gray-800 pb-6"
           >
             <div
               onClick={() => toggleExpand(service.id)}
-              className="flex items-center justify-between group cursor-pointer hover:bg-gray-50 p-4 rounded-lg transition-colors duration-200"
+              className="flex items-center justify-between group cursor-pointer hover:bg-red-500/10 p-4 rounded-lg transition-colors duration-200"
             >
               <div className="flex items-center gap-6">
                 <motion.span
                   initial={{ opacity: 0.5 }}
                   whileHover={{ opacity: 1 }}
-                  className="text-sm text-gray-600 font-medium"
+                  className="text-sm text-gray-300 font-medium"
                 >
                   {service.id}
                 </motion.span>
-                <h3 className="text-2xl font-normal text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
+                <h3 className="text-2xl font-normal text-gray-300 group-hover:text-red-400 transition-colors duration-200">
                   {service.title}
                 </h3>
               </div>
@@ -122,7 +123,7 @@ const OurServicesSection = () => {
                 className={`w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-xl transition-all duration-200
                   ${
                     expandedId === service.id
-                      ? "bg-blue-600 text-white border-blue-600"
+                      ? "bg-red-600 text-white border-red-600"
                       : "hover:border-gray-400"
                   }`}
               >
@@ -144,7 +145,7 @@ const OurServicesSection = () => {
                       initial={{ x: -20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.2 }}
-                      className="text-gray-600 text-lg leading-relaxed"
+                      className="text-gray-300 text-lg leading-relaxed"
                     >
                       {service.description}
                     </motion.p>
@@ -171,6 +172,13 @@ const OurServicesSection = () => {
           </motion.div>
         ))}
       </div>
+      <GridPattern
+        width={30}
+        height={30}
+        x={-1}
+        y={-1}
+        className="z-[-1] opacity-40"
+      />
     </motion.section>
   );
 };

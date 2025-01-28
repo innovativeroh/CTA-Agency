@@ -1,5 +1,7 @@
 import React from 'react'
 import { Phone, Mail, Globe } from 'lucide-react'
+import { GridPattern } from '@/components/ui/grid-pattern'
+import { BorderBeam } from '@/components/ui/border-beam'
 
 const AboutPage = () => {
   const stats = [
@@ -28,14 +30,14 @@ const AboutPage = () => {
   ]
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-28 sm:px-6 lg:px-8">
+    <div className="max-w-[1440px] mx-auto px-5 pt-36 relative">
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <h2 className="text-sm uppercase tracking-wide text-[#273043] mb-2">About Us</h2>
-        <h1 className="text-4xl font-bold text-[#232020] mb-4">
-          Unlocking Potential with<br />Digital Precision
+        <h2 className="text-sm uppercase tracking-wide text-gray-500 mb-2">About Us</h2>
+        <h1 className="text-white text-4xl font-bold mb-4 max-w-[400px] m-auto">
+          Unlocking Potential with Digital Precision
         </h1>
-        <p className="text-xl text-[#273043] max-w-3xl mx-auto">
+        <p className="text-xl text-neutral-500 max-w-3xl mx-auto">
           At CTA Agency, we specialize in transforming your brand's digital presence into a powerhouse 
           of growth and innovation. Our goal is simple: Your goals, our expertise.
         </p>
@@ -55,31 +57,34 @@ const AboutPage = () => {
 
       {/* What Sets Us Apart */}
       <div className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-[#232020]">What Sets Us Apart?</h2>
+        <h2 className="text-3xl font-bold mb-8 text-white">What Sets Us Apart?</h2>
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-md border border-[#273043]/10">
-            <h3 className="text-xl font-semibold mb-4 text-[#BE1E2D]">Proven Results</h3>
-            <p className="text-[#273043]">With over ₹5 crore in ad spends and an impressive ROAS of up to 14x, we deliver tangible outcomes that drive your business forward.</p>
+          <div className="p-6 rounded-lg shadow-md border border-neutral-500/40 relative">
+            <h3 className="text-xl font-semibold mb-4 text-white">Proven Results</h3>
+            <p className="text-neutral-500">With over ₹5 crore in ad spends and an impressive ROAS of up to 14x, we deliver tangible outcomes that drive your business forward.</p>
+            <BorderBeam />
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border border-[#273043]/10">
-            <h3 className="text-xl font-semibold mb-4 text-[#BE1E2D]">Comprehensive Solutions</h3>
-            <p className="text-[#273043]">From Shopify-powered e-commerce stores to bespoke web development, we cover all facets of digital strategy.</p>
+          <div className="p-6 rounded-lg shadow-md border border-neutral-500/40 relative">
+            <h3 className="text-xl font-semibold mb-4 text-white">Comprehensive Solutions</h3>
+            <p className="text-neutral-500">From Shopify-powered e-commerce stores to bespoke web development, we cover all facets of digital strategy.</p>
+            <BorderBeam />
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border border-[#273043]/10">
-            <h3 className="text-xl font-semibold mb-4 text-[#BE1E2D]">Tailored Strategies</h3>
-            <p className="text-[#273043]">Every business is unique. That's why we design customized solutions that align with your specific objectives.</p>
+          <div className="p-6 rounded-lg shadow-md border border-neutral-500/40 relative">
+            <h3 className="text-xl font-semibold mb-4 text-white">Tailored Strategies</h3>
+            <p className="text-neutral-500">Every business is unique. That's why we design customized solutions that align with your specific objectives.</p>
+            <BorderBeam />
           </div>
         </div>
       </div>
 
       {/* Our Expertise */}
       <div className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-[#232020]">Our Expertise</h2>
+        <h2 className="text-3xl font-bold mb-8 text-white">Our Expertise</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {expertise.map((item) => (
-            <div key={item.title} className="bg-white p-6 rounded-lg border border-[#273043]/10">
-              <h3 className="text-xl font-semibold mb-4 text-[#BE1E2D]">{item.title}</h3>
-              <p className="text-[#273043]">{item.description}</p>
+            <div key={item.title} className="p-6 rounded-lg">
+              <h3 className="text-xl font-semibold mb-4 text-white">{item.title}</h3>
+              <p className="text-neutral-500">{item.description}</p>
             </div>
           ))}
         </div>
@@ -87,38 +92,45 @@ const AboutPage = () => {
 
       {/* Success Stories */}
       <div className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-[#232020]">Our Success Stories</h2>
+        <h2 className="text-3xl font-bold mb-8 text-white">Our Success Stories</h2>
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-md border border-[#273043]/10">
-            <h3 className="text-xl font-semibold mb-4 text-[#BE1E2D]">Black Friday Brilliance</h3>
-            <p className="text-[#273043]">Achieved an impressive 14x ROAS during a Black Friday Sale.</p>
+          <div className="p-6 rounded-lg shadow-md border border-[#273043]/10">
+            <h3 className="text-xl font-semibold mb-4 text-white">Black Friday Brilliance</h3>
+            <p className="text-neutral-500">Achieved an impressive 14x ROAS during a Black Friday Sale.</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border border-[#273043]/10">
-            <h3 className="text-xl font-semibold mb-4 text-[#BE1E2D]">Collection Launch Triumph</h3>
-            <p className="text-[#273043]">Delivered an extraordinary 18x ROAS for a client's product launch.</p>
+          <div className="p-6 rounded-lg shadow-md border border-[#273043]/10">
+            <h3 className="text-xl font-semibold mb-4 text-white">Collection Launch Triumph</h3>
+            <p className="text-neutral-500">Delivered an extraordinary 18x ROAS for a client's product launch.</p>
           </div>
         </div>
       </div>
 
       {/* Contact Section */}
-      <div className="bg-white rounded-2xl p-8 border border-[#273043]/10">
-        <h2 className="text-3xl font-bold mb-4 text-[#232020]">Connect with Us</h2>
-        <p className="mb-6 text-[#273043]">Your success is just a conversation away. Reach out to us and let's discuss your digital goals.</p>
+      <div className="rounded-2xl p-8 border border-[#273043]/10">
+        <h2 className="text-3xl font-bold mb-4 text-white">Connect with Us</h2>
+        <p className="mb-6 text-neutral-500">Your success is just a conversation away. Reach out to us and let's discuss your digital goals.</p>
         <div className="space-y-4">
           <div className="flex items-center">
-            <Phone className="w-6 h-6 mr-3 text-[#BE1E2D]" />
-            <span className="text-[#273043]">+91 7792092027</span>
+            <Phone className="w-6 h-6 mr-3 text-neutral-400" />
+            <span className="text-neutral-400">+91 7792092027</span>
           </div>
           <div className="flex items-center">
-            <Mail className="w-6 h-6 mr-3 text-[#BE1E2D]" />
-            <span className="text-[#273043]">howdy.cta@gmail.com</span>
+            <Mail className="w-6 h-6 mr-3 text-neutral-400" />
+            <span className="text-neutral-400">howdy.cta@gmail.com</span>
           </div>
           <div className="flex items-center">
-            <Globe className="w-6 h-6 mr-3 text-[#BE1E2D]" />
-            <span className="text-[#273043]">www.howdycta.com</span>
+            <Globe className="w-6 h-6 mr-3 text-neutral-400" />
+            <span className="text-neutral-400">www.howdycta.com</span>
           </div>
         </div>
       </div>
+      <GridPattern
+          width={30}
+          height={30}
+          x={-1}
+          y={-1}
+          className="z-[-1] opacity-40"
+        />
     </div>
   )
 }

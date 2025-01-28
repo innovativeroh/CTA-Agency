@@ -16,95 +16,90 @@ export const OurClient = [
 
   {
     title: "client 4",
-    imageUrl: "/client 3.png",
-  },
-
-  {
-    title: "client 5",
     imageUrl: "/client 4.png",
   },
 
   {
-    title: "client 6",
+    title: "client 5",
     imageUrl: "/client 5.png",
   },
 
   {
-    title: "client 7",
+    title: "client 6",
     imageUrl: "/client 6.png",
   },
 
   {
-    title: "client 8",
+    title: "client 7",
     imageUrl: "/client 7.png",
   },
 
   {
-    title: "client 9",
+    title: "client 8",
     imageUrl: "/client 8.png",
   },
 
   {
-    title: "client 10",
+    title: "client 9",
     imageUrl: "/client 9.png",
   },
 
   {
-    title: "client 11",
+    title: "client 10",
     imageUrl: "/client 10.png",
-  },
-  {
-    title: "client 12",
-    imageUrl: "/client 11.png",
   },
 
   {
-    title: "client 13",
+    title: "client 11",
+    imageUrl: "/client 11.png",
+  },
+  {
+    title: "client 12",
     imageUrl: "/client 12.png",
   },
 
   {
-    title: "client 14",
+    title: "client 13",
     imageUrl: "/client 13.png",
   },
 
   {
-    title: "client 15",
+    title: "client 14",
     imageUrl: "/client 14.png",
   },
 
   {
-    title: "client 16",
+    title: "client 15",
     imageUrl: "/client 15.png",
   },
 
   {
-    title: "client 17",
+    title: "client 16",
     imageUrl: "/client 16.png",
   },
 
   {
-    title: "client 18",
+    title: "client 17",
     imageUrl: "/client 17.png",
   },
 
   {
-    title: "client 19",
+    title: "client 18",
     imageUrl: "/client 18.png",
   },
 
   {
-    title: "client 20",
+    title: "client 19",
     imageUrl: "/client 19.png",
   },
 
   {
-    title: "client 21",
+    title: "client 20",
     imageUrl: "/client 20.png",
   },
 
   {
-    title: "client 22",
+    title: "client 21",
     imageUrl: "/client 21.png",
   },
 
@@ -117,6 +112,7 @@ export const OurClient = [
     title: "client 23",
     imageUrl: "/client 23.png",
   },
+
   {
     title: "client 24",
     imageUrl: "/client 24.png",
@@ -148,6 +144,5 @@ export const OurClient = [
   {
     title: "client 31",
     imageUrl: "/client 31.png",
-  },
-  
+  },  
 ];

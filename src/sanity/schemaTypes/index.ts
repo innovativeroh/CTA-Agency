@@ -1,3 +1,5 @@
-import {postType} from './postType'
+import { contactFormTypes } from "./ContactFormTypes";
+import { ExperienceTypes } from "./ExperienceTypes";
+import ProjectTypes from "./ProjectTypes";
 
-export const schemaTypes = [postType]
+export const schemaTypes = [ProjectTypes, ExperienceTypes, contactFormTypes]

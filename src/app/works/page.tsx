@@ -1,76 +1,101 @@
-import ProjectCard from '@/components/ui/ProjectCard'
-import React from 'react'
+"use client";
+import ProjectCard from "@/components/ui/ProjectCard";
+import React, { useEffect, useState } from "react";
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
+import { GridPattern } from "@/components/ui/grid-pattern";
+
+interface Project {
+  _id: string;
+  title: string;
+  description: string;
+  shortDescription: string;
+  image: any;
+  technologies: string[];
+  projectUrl?: string;
+  status: "completed" | "in-progress" | "coming-soon";
+  featured: boolean;
+}
 
 const OurWorks = () => {
-    const projects = [
-        {
-          id: 1,
-          title: 'E-commerce Platform',
-          description: 'A full-featured online store with cart and checkout functionality.',
-          imageUrl: '/placeholder.svg?height=300&width=400',
-        },
-        {
-          id: 2,
-          title: 'Social Media Dashboard',
-          description: 'Analytics dashboard for tracking social media engagement.',
-          imageUrl: '/placeholder.svg?height=300&width=400',
-        },
-        {
-          id: 3,
-          title: 'Mobile Banking App',
-          description: 'Secure and user-friendly mobile banking application.',
-          imageUrl: '/placeholder.svg?height=300&width=400',
-        },
-        {
-          id: 4,
-          title: 'Fitness Tracker',
-          description: 'Wearable device companion app for tracking fitness goals.',
-          imageUrl: '/placeholder.svg?height=300&width=400',
-        },
-        {
-          id: 5,
-          title: 'Real Estate Listings',
-          description: 'Property search and listing platform for real estate agents.',
-          imageUrl: '/placeholder.svg?height=300&width=400',
-        },
-        {
-          id: 6,
-          title: 'Task Management Tool',
-          description: 'Collaborative project management and task tracking application.',
-          imageUrl: '/placeholder.svg?height=300&width=400',
-        },
-      ]
-      
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const query = `*[_type == "project"] | order(featured desc, order asc) {
+          _id,
+          title,
+          description,
+          shortDescription,
+          image,
+          technologies,
+          projectUrl,
+          status,
+          featured
+        }`;
+        const fetchedProjects = await client.fetch(query);
+        setProjects(fetchedProjects);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+        setLoading(false);
+      }
+    };
+    fetchProjects();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; // Add your skeleton loader here if needed
+  }
+
   return (
-    <section className="w-full min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+    <section className="w-full min-h-screen">
       <div className="container mx-auto px-4 py-20 md:py-32">
         <div className="max-w-3xl mx-auto text-center mb-20">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#BE1E2D] to-[#273043] relative">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white relative">
             Our Works
-            <div className="absolute w-24 h-1 bg-[#BE1E2D] bottom-0 left-1/2 transform -translate-x-1/2 mt-4"></div>
+            <div className="absolute w-24 h-1 bg-white bottom-0 left-1/2 transform -translate-x-1/2 mt-4"></div>
           </h1>
-          <p className="text-[#232020] dark:text-[#EDF0DA] text-xl leading-relaxed max-w-2xl mx-auto">
-            Explore our portfolio of successful projects and innovative solutions that have transformed businesses
+          <p className="text-neutral-500 dark:text-[#EDF0DA] text-xl leading-relaxed max-w-2xl mx-auto">
+            Explore our portfolio of successful projects and innovative
+            solutions that have transformed businesses
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {projects.map((project) => (
-            <div 
-              key={project.id}
+          {projects?.map((project) => (
+            <div
+              key={project._id}
               className="transform hover:scale-105 transition-all duration-300 hover:shadow-2xl"
             >
               <ProjectCard
                 title={project.title}
-                description={project.description}
-                imageUrl={project.imageUrl}
+                description={project.shortDescription || project.description}
+                imageUrl={urlForImage(project.image).url()}
+                technologies={project.technologies}
+                projectUrl={project.projectUrl}
+                status={project.status}
+                featured={project.featured}
               />
             </div>
-          ))}
+          )) || (
+            <div className="col-span-full text-center text-neutral-400">
+              No projects available
+            </div>
+          )}
         </div>
       </div>
+      <GridPattern
+        width={30}
+        height={30}
+        x={-1}
+        y={-1}
+        className="z-[-1] opacity-40"
+      />
     </section>
-  )
-}
+  );
+};
 
-export default OurWorks
+export default OurWorks;

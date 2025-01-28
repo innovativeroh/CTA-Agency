@@ -1,97 +1,119 @@
-"use client"
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import ExperienceCard from "../ui/ExperienceCard";
 import { motion } from "framer-motion";
+import { client } from "@/sanity/lib/client";
+import { groq } from "next-sanity";
+import { GridPattern } from "../ui/grid-pattern";
+
+interface Experience {
+  _id: string;
+  title: string;
+  description: string;
+  image: {
+    asset: {
+      url: string;
+    };
+    alt: string;
+  };
+  order: number;
+}
 
 const ExperienceSection = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      const fetchedExperiences = await client.fetch<Experience[]>(groq`
+        *[_type == "experience"] | order(order asc) {
+          _id,
+          title,
+          description,
+          image {
+            asset-> {
+              url
+            },
+            alt
+          },
+          order
+        }
+      `);
+      setExperiences(fetchedExperiences);
+    };
+
+    fetchExperiences();
+  }, []);
 
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="py-10 md:py-20 bg-gradient-to-b from-[#232020] to-[#273043]"
+      className="w-full px-4 py-10 md:py-20 relative"
     >
-      <main className="max-w-[95%] md:max-w-[90%] m-auto bg-[#273043] rounded-2xl md:rounded-3xl border border-[#EDF0DA]/10 shadow-2xl">
-        <div className="px-4 md:px-8 py-8 md:py-16 w-full flex-center flex-col gap-5">
-          <div className="w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-8">
-            <motion.div 
+      <main className="w-full max-w-[1440px] mx-auto rounded-2xl md:rounded-3xl border border-zinc-800 bg-zinc-900/10 backdrop-blur-lg shadow-2xl">
+        <div className="px-4 sm:px-6 md:px-8 py-8 md:py-16 w-full flex flex-col gap-5">
+          <div className="w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="flex-1 w-full flex-start"
+              className="w-full md:w-1/2"
             >
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-neutral-400 bg-clip-text text-transparent">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-white to-zinc-400 bg-clip-text text-transparent">
                 Our Expertise
               </h1>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="flex-1 w-full flex-end"
+              className="w-full md:w-1/2 flex-end"
             >
-              <p className="text-base sm:text-lg text-neutral-400 font-normal text-left max-w-full md:max-w-[400px] leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-neutral-400 font-normal text-left md:text-right leading-relaxed max-w-[300px]">
                 Transform ideas into reality by combining creativity, strategy,
                 and expertise to deliver exceptional results.
               </p>
             </motion.div>
           </div>
-
-          <motion.span 
+          <motion.span
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="h-[1px] w-full bg-gradient-to-r from-neutral-800 via-neutral-500 to-neutral-800 my-8 md:my-12"
+            className="h-[1px] w-full bg-gradient-to-r from-zinc-800 via-zinc-600 to-zinc-800 my-8 md:my-12"
           />
-
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-content-center justify-items-center gap-4 md:gap-8"
+            className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8"
           >
-            <ExperienceCard
-              index={0}
-              title="Market Research"
-              description="Dive deep into data to uncover insights that unlock your business potential. Our research-driven strategies help you stay ahead of the competition."
-              image="/market research.jpg"
-            />
-            <ExperienceCard
-              index={1}
-              title="Ads Production"
-              description="From ideation to execution, we design and produce campaigns that not only capture attention but deliver measurable results."
-              image="/Ads Production.jpg"
-            />
-            <ExperienceCard
-              index={2}
-              title="Branding Strategies"
-              description="Crafting identities that resonate. We shape branding narratives that connect emotionally and inspire trust."
-              image="/Branding Strategies.jpg"
-            />
-            <ExperienceCard
-              index={3}
-              title="Web Development & Design"
-              description="We bring your ideas to life by designing and optimizing websites that perform as good as they look. Whether you're starting from scratch or need upgrades, we've got you covered."
-              image="/market research.jpg"
-            />
+            {experiences.map((experience, index) => (
+              <ExperienceCard
+                key={experience._id}
+                index={index}
+                title={experience.title}
+                description={experience.description}
+                image={experience.image.asset.url}
+                imageAlt={experience.image.alt}
+              />
+            ))}
           </motion.div>
+          w
         </div>
       </main>
+      <GridPattern
+        width={30}
+        height={30}
+        x={-1}
+        y={-1}
+        className="z-[-1] opacity-40"
+      />
     </motion.section>
   );
 };

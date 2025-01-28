@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/core/Header";
 import FooterSection from "@/components/core/FooterSection";
+import { GridPattern } from "@/components/ui/grid-pattern";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "CTA Agency | Designing Digital Strategies",
@@ -19,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`antialiased`}
-      >
+      <body className={`h-full antialiased bg-black`}>
         <Header />
         {children}
         <FooterSection />
